@@ -1,0 +1,172 @@
+﻿.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #f7f7f7;
+}
+
+main {
+  flex: 1;
+  background: white;
+  border-radius: 2rem 0 0 2rem;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.sidebar {
+  background: #f7f7f7;
+}
+
+.top-row {
+  background-color: rgba(0, 0, 0, 0) !important;
+  justify-content: flex-end;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: none !important;
+}
+
+.top-row ::deep a, .top-row ::deep .btn-link {
+  white-space: nowrap;
+  margin-left: 1.5rem;
+  text-decoration: none;
+}
+
+.top-row ::deep a:hover, .top-row ::deep .btn-link:hover {
+  text-decoration: underline;
+}
+
+.top-row ::deep a:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar-brand {
+  color: #875be1 !important;
+}
+
+.nav-item a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #6b3dc9 !important;
+}
+
+.nav-item a {
+  color: #875be1 !important;
+}
+
+@media (max-width: 640.98px) {
+  .top-row:not(.auth) {
+    display: flex;
+  }
+  .top-row.auth {
+    justify-content: space-between;
+  }
+  .top-row ::deep a, .top-row ::deep .btn-link {
+    margin-left: 0;
+  }
+}
+@media (min-width: 641px) {
+  .page {
+    flex-direction: row;
+  }
+  .sidebar {
+    width: 250px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+  .top-row {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .top-row.auth ::deep a:first-child {
+    flex: 1;
+    text-align: right;
+    width: 0;
+  }
+  .top-row, article {
+    padding-left: 2rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+.btn-circle {
+  padding: 6px 12px;
+  border-radius: 60px;
+  font-size: 21px;
+  text-align: center;
+  border: 2px dashed gray;
+}
+
+.btn-theme {
+  background: #875be1 !important;
+  color: white;
+}
+
+.btn-check:focus + .btn, .btn:focus {
+  box-shadow: none !important;
+}
+
+.txt-primary {
+  color: #875be1;
+}
+
+.txt-danger {
+  color: #d97486;
+}
+
+.txt-success {
+  color: #5bd3a8;
+}
+
+.font1 {
+  font-family: "Quicksand", sans-serif;
+}
+
+.font2 {
+  font-family: "Poppins", sans-serif;
+}
+
+.form-control {
+  font-family: "Quicksand", sans-serif;
+}
+
+.nav-item[b-7va9g6gj3c] a.active {
+  background-color: none;
+}
+
+.rectangle {
+  width: 233px;
+  aspect-ratio: 15/9;
+  border: 2px dashed #d8e3ed;
+  border-radius: 1rem;
+  background: rgba(247, 247, 247, 0.4117647059);
+  color: #d8e3ed;
+  cursor: pointer;
+}
+
+.rectangle2 {
+  width: 233px;
+  aspect-ratio: 15/9;
+  border-radius: 1rem;
+  background: rgba(247, 247, 247, 0.4117647059);
+  color: #a4a8ab;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  /*
+      &:hover {
+          width: 235px;
+          transition: 0.3s;
+      }*/
+}
+
+.rectangle-solid {
+  width: 233px;
+  aspect-ratio: 15/9;
+  border: 2px solid #d8e3ed;
+  border-radius: 1rem;
+  background: rgba(247, 247, 247, 0.4117647059);
+  color: #d8e3ed;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///C:/Users/%25C5%259Eevval/Desktop/CopyLingo/CopyLingo.Web/CopyLingo.Web/wwwroot/scss/_mainLayout.scss%22,%22file:///C:/Users/%25C5%259Eevval/Desktop/CopyLingo/CopyLingo.Web/CopyLingo.Web/wwwroot/scss/_common.scss%22,%22file:///C:/Users/%25C5%259Eevval/Desktop/CopyLingo/CopyLingo.Web/CopyLingo.Web/wwwroot/scss/_variables.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACI;EACA;EACA;EACA;;;AAEJ;EACI;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;;;AAGA;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAEJ;EACI;;;AAER;EACI;EACA;;;AAEJ;EACI;;;AAGJ;EACI;IACI;;EAGJ;IACI;;EAGJ;IACI;;;AAIR;EACI;IACI;;EAGJ;IACI;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;;EAGJ;IACI;IACA;IACA;;EAGJ;IACI;IACA;;;AC7FP;EACG;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI,OClBW;;;ADqBf;EACI,OCpBgB;;;ADuBpB;EACI,OCvBkB;;;AD0BtB;EACI,aCrBS;;;ADwBb;EACI,aCxBU;;;AD2Bd;EACI,aC7BS;;;ADgCb;EACI;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;AACJ;AAAA;AAAA;AAAA;AAAA;;;AAOA;EACI;EACA;EACA;EACA;EACA;EACA%22%7D */

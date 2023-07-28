@@ -1,0 +1,107 @@
+﻿@page "/"
+@using CopyLingo.Shared.TempShared;
+
+<div class="row ps-5 pb-3">
+    <label class="txt-primary fs-4 fw-bold font1">Yeni Ekle</label>
+</div>
+
+
+<div class="px-5">
+    <div class="row pt-1">
+        <div class="col">
+            <label></label>
+            <input class="form-control" placeholder="Kartlık Adı" />
+        </div>
+    </div>
+
+    <label class="mt-5 font1">Kelimeler</label>
+    @foreach (var (item, index) in _wordList.Select((item, index) => (item, index)))
+    {
+        <div class="px-3 mt-1 py-2 font1 border rounded-1">
+            <div class="row col">
+                <div class="col">@item.Id</div>
+                <div class="col">@item.English</div>
+                <div class="col">@item.Turkish</div>
+                <div class="col text-end"><i @onclick="() => GoToEdit(index)" class="txt-success bx bx-edit cursor-pointer pe-5"></i><i @onclick="() => Delete(index)" class="txt-danger bx bx-trash cursor-pointer"></i></div>
+            </div>
+        </div>
+    }
+
+    <hr />
+    <div class="row pt-3">
+        <div class="col">
+            <input @bind-value="_dto.English" class="form-control" placeholder="Kelime" />
+        </div>
+        <div class="col">
+            <input @bind-value="_dto.Turkish" class="form-control" placeholder="Türkçesi" />
+        </div>
+    </div>
+
+    <div class="row m-auto pt-5">
+        <div class="text-center">
+            <button @onclick="Add" class="btn btn-circle">
+                <i style=" line-height: 0; " class="text-secondary bx bx-plus"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+@code{
+    WordDto _dto = new WordDto();
+    IList<WordDto> _wordList = new List<WordDto>();
+    int indexListItem;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await List();
+    }
+
+    async Task List()
+    {
+        _wordList.Add(new WordDto(){Id = 1, English = "one", Turkish = "bir" });
+        _wordList.Add(new WordDto(){Id = 2, English = "two", Turkish = "iki" });
+        _wordList.Add(new WordDto(){Id = 3, English = "three", Turkish = "üç" });
+        _wordList.Add(new WordDto(){Id = 4, English = "four", Turkish = "dört" });
+    }
+
+    async Task Add()
+    {
+        if (_dto.Id != 0)
+        {
+            _wordList[indexListItem] = new WordDto
+            {
+                English = _dto.English,
+                Turkish = _dto.Turkish
+            };
+            await Clear();
+            StateHasChanged();
+            return;
+        }
+
+        if (_wordList == null) _wordList = new List<WordDto>();
+        _wordList.Add(_dto);
+        await Clear();
+        StateHasChanged();
+
+    }
+
+    async Task GoToEdit(int index)
+    {
+        _dto.Id = _wordList[index].Id;
+        _dto.English = _wordList[index].English;
+        _dto.Turkish = _wordList[index].Turkish;
+        indexListItem = index;
+        StateHasChanged();
+    }
+
+    async Task Delete(int index)
+    {
+        _wordList.RemoveAt(index);
+        StateHasChanged();
+    }
+
+    async Task Clear()
+    {
+        _dto = new WordDto();
+    }
+}

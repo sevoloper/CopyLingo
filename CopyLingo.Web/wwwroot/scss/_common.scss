@@ -1,0 +1,77 @@
+﻿.btn-circle {
+    padding: 6px 12px;
+    border-radius: 60px;
+    font-size: 21px;
+    text-align: center;
+    border: 2px dashed gray;
+}
+
+.btn-theme {
+    background: $theme-color !important;
+    color: white;
+}
+
+.btn-check:focus + .btn, .btn:focus {
+    box-shadow: none!important;
+}
+
+.txt-primary {
+    color: $theme-color;
+}
+
+.txt-danger {
+    color: $theme-color-danger;
+}
+
+.txt-success {
+    color: $theme-color-success;
+}
+
+.font1 {
+    font-family: $theme-font;
+}
+
+.font2 {
+    font-family: $theme-font2;
+}
+
+.form-control {
+    font-family: $theme-font;
+}
+
+.nav-item[b-7va9g6gj3c] a.active {
+    background-color: none;
+}
+
+.rectangle {
+    width: 233px;
+    aspect-ratio: 15/9;
+    border: 2px dashed #d8e3ed;
+    border-radius: 1rem;
+    background: #f7f7f769;
+    color: #d8e3ed;
+    cursor: pointer;
+}
+
+.rectangle2 {
+    width: 233px;
+    aspect-ratio: 15/9;
+    border-radius: 1rem;
+    background: rgba(247, 247, 247, 0.4117647059);
+    color: #a4a8ab;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+/*
+    &:hover {
+        width: 235px;
+        transition: 0.3s;
+    }*/
+}
+
+.rectangle-solid {
+    width: 233px;
+    aspect-ratio: 15/9;
+    border: 2px solid #d8e3ed;
+    border-radius: 1rem;
+    background: #f7f7f769;
+    color: #d8e3ed;
+}

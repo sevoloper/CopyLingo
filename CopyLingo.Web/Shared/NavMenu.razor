@@ -1,0 +1,39 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand font1 fw-bold" href="/">CopyLingo</a>
+        <button title="Navigation menu" class="navbar-toggler text-secondary" @onclick="ToggleNavMenu">
+            <span class="txt-primary bx bx-menu"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="ps-4 nav-item px-3">
+            <NavLink class="nav-link font2 fs-6" href="" Match="NavLinkMatch.All">
+                <span class="fs-5 bx bx-home-alt-2 pe-3" aria-hidden="true"></span> Anasayfa
+            </NavLink>
+        </div>
+        <div class="ps-4 nav-item px-3">
+            <NavLink class="nav-link font2 fs-6" href="/cards" Match="NavLinkMatch.All">
+                <span class="fs-5 bx bx-card pe-3" aria-hidden="true"></span> Kartlar
+            </NavLink>
+        </div>
+        <div class="ps-4 nav-item px-3">
+            <NavLink class="nav-link font2 fs-6" href="" Match="NavLinkMatch.All">
+                <span class="fs-5 bx bx-plus pe-3" aria-hidden="true"></span> Yeni Ekle
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
