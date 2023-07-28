@@ -1,3 +1,6 @@
+using CopyLingo.Core.Interfaces;
+using CopyLingo.Core.Models;
+using CopyLingo.Core.Services;
 using CopyLingo.Web.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -13,7 +16,8 @@ namespace CopyLingo.Web
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddDbContext<DatabaseContext>();
+            builder.Services.AddScoped<IWordService, WordService>();
 
             var app = builder.Build();
 

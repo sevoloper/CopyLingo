@@ -1,5 +1,5 @@
 ﻿@page "/cards"
-@using CopyLingo.Shared.TempShared;
+@using CopyLingo.Core.Models.Entities;
 
 
 <div class="row ps-5 pb-5">
@@ -25,7 +25,7 @@
 </div>
 
 @code{
-    IList<WordDto> _wordList = new List<WordDto>();
+    IList<Word> _wordList = new List<Word>();
 
     protected override Task OnInitializedAsync()
     {

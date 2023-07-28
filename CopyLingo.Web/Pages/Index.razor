@@ -1,5 +1,7 @@
 ﻿@page "/"
-@using CopyLingo.Shared.TempShared;
+@using CopyLingo.Core.Interfaces
+@using CopyLingo.Core.Models.Entities;
+@inject IWordService _wordService
 
 <div class="row ps-5 pb-3">
     <label class="txt-primary fs-4 fw-bold font1">Yeni Ekle</label>
@@ -9,8 +11,8 @@
 <div class="px-5">
     <div class="row pt-1">
         <div class="col">
-            <label></label>
-            <input class="form-control" placeholder="Kartlık Adı" />
+            @*<label>Kartlık Adı</label>*@
+            <input class="form-control" disabled placeholder="Kartlık Adı" />
         </div>
     </div>
 
@@ -47,8 +49,8 @@
 </div>
 
 @code{
-    WordDto _dto = new WordDto();
-    IList<WordDto> _wordList = new List<WordDto>();
+    Word _dto = new Word();
+    IList<Word> _wordList = new List<Word>();
     int indexListItem;
 
     protected override async Task OnInitializedAsync()
@@ -58,28 +60,21 @@
 
     async Task List()
     {
-        _wordList.Add(new WordDto(){Id = 1, English = "one", Turkish = "bir" });
-        _wordList.Add(new WordDto(){Id = 2, English = "two", Turkish = "iki" });
-        _wordList.Add(new WordDto(){Id = 3, English = "three", Turkish = "üç" });
-        _wordList.Add(new WordDto(){Id = 4, English = "four", Turkish = "dört" });
+        _wordList = await _wordService.GetAllWords();
     }
 
     async Task Add()
     {
         if (_dto.Id != 0)
         {
-            _wordList[indexListItem] = new WordDto
-            {
-                English = _dto.English,
-                Turkish = _dto.Turkish
-            };
+            _wordList = await _wordService.UpdateWord(_dto);
             await Clear();
             StateHasChanged();
             return;
         }
 
-        if (_wordList == null) _wordList = new List<WordDto>();
-        _wordList.Add(_dto);
+        if (_wordList == null) _wordList = new List<Word>();
+        _wordList = await _wordService.AddWord(_dto.English, _dto.Turkish);
         await Clear();
         StateHasChanged();
 
@@ -87,21 +82,22 @@
 
     async Task GoToEdit(int index)
     {
-        _dto.Id = _wordList[index].Id;
-        _dto.English = _wordList[index].English;
-        _dto.Turkish = _wordList[index].Turkish;
+        var res = await _wordService.FindWord(_wordList[index].Id);
+        _dto.Id = res.Id;
+        _dto.Turkish = res.Turkish;
+        _dto.English = res.English;
         indexListItem = index;
         StateHasChanged();
     }
 
     async Task Delete(int index)
     {
-        _wordList.RemoveAt(index);
+        _wordList = await _wordService.DeleteWord(_wordList[index]);
         StateHasChanged();
     }
 
     async Task Clear()
     {
-        _dto = new WordDto();
+        _dto = new Word();
     }
 }
